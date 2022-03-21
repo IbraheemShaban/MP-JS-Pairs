@@ -38,10 +38,27 @@ Array.prototype.getRandom = function () {
 
 function pairs(names) {
   // Your code goes here
+  if (typeof names === 'undefined' || names.length === 0) {
+    return [];
+  }
+  const answer = [];
+  if (names.length % 2 === 0 && names.length !== 0) {
+    let pairsNum = names.length / 2;
+    for (let i = 0; i < pairsNum; i++) {
+      answer.push([names.getRandom(), names.getRandom()]);
+    }
+    return answer;
+  }
+  let pairsNum = (names.length - 1) / 2;
+  for (let i = 0; i < pairsNum; i++) {
+    answer.push([names.getRandom(), names.getRandom()]);
+  }
+  answer.push([names.getRandom()]);
+  return answer;
 }
 
 module.exports = pairs;
 
 console.log(
-  pairs(["Asis", "Hamsa", "Fawas", "Mishmish", "Hussein", "Lailz", "Mr Potato"])
+  pairs(['Asis', 'Hamsa', 'Fawas', 'Mishmish', 'Hussein', 'Lailz', 'Mr Potato'])
 );
